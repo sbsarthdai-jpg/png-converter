@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이미지 포맷 변환기 모음 - 이미지 파일 변환 도구</title>
+<meta name="description" content="JPG, WEBP, GIF, BMP 이미지를 PNG로 무료 변환하세요. 파일은 서버로 전송되지 않고 브라우저에서 바로 처리되며, 여러 장을 한 번에 변환할 수 있습니다.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="이미지 포맷 변환기 모음 - 이미지 파일 변환 도구">
+<meta property="og:description" content="JPG, WEBP, GIF, BMP 이미지를 PNG로 무료 변환하세요. 파일은 서버로 전송되지 않고 브라우저에서 바로 처리됩니다.">
+<meta property="og:image" content="assets/og-image.png">
+
+<!-- ⚠️ 배포 후 YOUR-DOMAIN을 실제 도메인으로 교체하세요 (canonical, og:url, sitemap.xml, robots.txt 전부) -->
+<link rel="canonical" href="https://YOUR-DOMAIN/">
+<meta property="og:url" content="https://YOUR-DOMAIN/">
+
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="8.5" cy="10" r="1.5"></circle><path d="m4 17 5-5 4 4 3-3 4 4"></path></svg>
+      이미지 포맷 변환기 모음
+    </a>
+    <nav class="site-nav">
+      <a href="privacy.html">개인정보처리방침</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero container">
+    <h1>이미지를 PNG로 변환하세요</h1>
+    <p>JPG, WEBP, GIF, BMP 파일을 브라우저에서 바로 PNG로 변환합니다. 업로드 없이, 서버 전송 없이 안전하게.</p>
+  </section>
+
+  <section class="container">
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="이미지 파일 업로드">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 16V4"></path><path d="m6.5 9.5 5.5-5.5 5.5 5.5"></path><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"></path></svg>
+      <div class="dropzone-title">클릭하거나 파일을 끌어다 놓으세요</div>
+      <p class="dropzone-sub">JPG · WEBP · GIF · BMP · PNG 지원 · 여러 장 동시 업로드 가능</p>
+      <p class="dropzone-sub dropzone-note">움직이는 GIF는 첫 프레임만 PNG로 변환돼요</p>
+      <input type="file" id="file-input" accept="image/jpeg,image/webp,image/gif,image/bmp,image/png,.jpg,.jpeg,.webp,.gif,.bmp,.png" multiple>
+    </div>
+
+    <div class="toolbar" id="toolbar" style="display:none;">
+      <span class="toolbar-count" id="toolbar-count">0개 파일</span>
+      <div class="toolbar-actions">
+        <button class="btn btn-secondary btn-sm" id="clear-all">전체 삭제</button>
+        <button class="btn btn-sm" id="download-all" disabled>전체 다운로드</button>
+      </div>
+    </div>
+
+    <div class="card-grid" id="card-grid"></div>
+
+    <div class="disclaimer" data-disclaimer>
+      <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+      <span>이 도구는 파일을 서버로 전송하지 않고 브라우저 안에서만 처리합니다. 자세한 내용은 <a href="privacy.html">개인정보처리방침</a>을 확인하세요.</span>
+    </div>
+  </section>
+
+  <section class="container features">
+    <div class="feature-item">
+      <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      <h3>서버 전송 없음</h3>
+      <p>모든 변환은 canvas API로 브라우저 내에서 처리돼요.</p>
+    </div>
+    <div class="feature-item">
+      <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+      <h3>일괄 변환</h3>
+      <p>여러 장을 한 번에 올려서 한꺼번에 PNG로 바꿀 수 있어요.</p>
+    </div>
+    <div class="feature-item">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M5 21h14"></path></svg>
+      <h3>즉시 다운로드</h3>
+      <p>변환이 끝나면 바로 미리보고 다운로드할 수 있어요.</p>
+    </div>
+  </section>
+
+  <section class="container tools-section">
+    <h2>자주 찾는 변환</h2>
+    <div class="tool-grid">
+      <a class="tool-card" href="jpg-to-png.html">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 16V4"></path><path d="m6.5 9.5 5.5-5.5 5.5 5.5"></path><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"></path></svg>
+        <h3>JPG → PNG</h3>
+        <p>JPG 이미지를 PNG로 변환</p>
+      </a>
+      <a class="tool-card" href="png-to-jpg.html">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 16V4"></path><path d="m6.5 9.5 5.5-5.5 5.5 5.5"></path><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"></path></svg>
+        <h3>PNG → JPG</h3>
+        <p>PNG 이미지를 JPG로 변환</p>
+      </a>
+      <a class="tool-card" href="webp-to-png.html">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 16V4"></path><path d="m6.5 9.5 5.5-5.5 5.5 5.5"></path><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"></path></svg>
+        <h3>WEBP → PNG</h3>
+        <p>WEBP 이미지를 PNG로 변환</p>
+      </a>
+      <a class="tool-card" href="heic-to-jpg.html">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 16V4"></path><path d="m6.5 9.5 5.5-5.5 5.5 5.5"></path><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"></path></svg>
+        <h3>HEIC → JPG</h3>
+        <p>아이폰 사진을 JPG로 변환</p>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer">
+  <div class="container">
+    <p>© 2026 이미지 포맷 변환기 모음 · 모든 변환은 사용자의 브라우저에서만 처리됩니다.</p>
+    <p><a href="privacy.html">개인정보처리방침</a></p>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "이미지 포맷 변환기 모음",
+  "url": "https://YOUR-DOMAIN/",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Any (웹 브라우저)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+  "description": "JPG, WEBP, GIF, BMP 등 다양한 이미지 파일을 PNG로 무료 변환하는 브라우저 기반 도구. 서버 업로드 없이 클라이언트에서 바로 처리됩니다."
+}
+</script>
+<script src="js/converter.js"></script>
+</body>
+</html>

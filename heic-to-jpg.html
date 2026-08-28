@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HEIC를 JPG로 변환 - 아이폰 사진 무료 변환기</title>
+<meta name="description" content="아이폰 HEIC 사진을 JPG로 무료 변환하세요. 브라우저에서 바로 처리되어 안전하며, 여러 장의 HEIC 파일도 한 번에 변환할 수 있습니다.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="HEIC를 JPG로 변환 - 아이폰 사진 무료 변환기">
+<meta property="og:description" content="아이폰 HEIC 사진을 JPG로 무료 변환하세요. 브라우저에서 바로 처리되어 안전합니다.">
+<meta property="og:image" content="assets/og-image.png">
+
+<!-- ⚠️ 배포 후 YOUR-DOMAIN을 실제 도메인으로 교체하세요 (canonical, og:url, sitemap.xml, robots.txt 전부) -->
+<link rel="canonical" href="https://YOUR-DOMAIN/heic-to-jpg.html">
+<meta property="og:url" content="https://YOUR-DOMAIN/heic-to-jpg.html">
+
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="8.5" cy="10" r="1.5"></circle><path d="m4 17 5-5 4 4 3-3 4 4"></path></svg>
+      이미지 포맷 변환기 모음
+    </a>
+    <nav class="site-nav">
+      <a href="privacy.html">개인정보처리방침</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero container">
+    <h1>HEIC를 JPG로 변환하세요</h1>
+    <p>아이폰에서 찍은 HEIC 사진을 브라우저에서 바로 JPG로 변환합니다. 업로드 없이, 서버 전송 없이 안전하게.</p>
+  </section>
+
+  <section class="container crosslinks">
+    <h2>다른 변환도 필요하세요?</h2>
+    <div class="crosslink-list">
+      <a href="index.html"><svg class="icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"></path></svg> 홈 · 모든 포맷 → PNG</a>
+      <a href="jpg-to-png.html"><svg class="icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"></path></svg> JPG → PNG</a>
+      <a href="png-to-jpg.html"><svg class="icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"></path></svg> PNG → JPG</a>
+      <a href="webp-to-png.html"><svg class="icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"></path></svg> WEBP → PNG</a>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="HEIC 파일 업로드">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 16V4"></path><path d="m6.5 9.5 5.5-5.5 5.5 5.5"></path><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"></path></svg>
+      <div class="dropzone-title">클릭하거나 HEIC 파일을 끌어다 놓으세요</div>
+      <p class="dropzone-sub">HEIC · HEIF 지원 · 여러 장 동시 업로드 가능</p>
+      <p class="dropzone-sub dropzone-note">파일 크기가 크면 변환에 시간이 조금 더 걸릴 수 있어요</p>
+      <input type="file" id="file-input" accept=".heic,.heif,image/heic,image/heif" multiple>
+    </div>
+
+    <div class="toolbar" id="toolbar" style="display:none;">
+      <span class="toolbar-count" id="toolbar-count">0개 파일</span>
+      <div class="toolbar-actions">
+        <button class="btn btn-secondary btn-sm" id="clear-all">전체 삭제</button>
+        <button class="btn btn-sm" id="download-all" disabled>전체 다운로드</button>
+      </div>
+    </div>
+
+    <div class="card-grid" id="card-grid"></div>
+
+    <div class="disclaimer" data-disclaimer>
+      <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+      <span>이 도구는 파일을 서버로 전송하지 않고 브라우저 안에서만 처리합니다. 변환에는 오픈소스 라이브러리(heic2any)가 사용되며, 이 역시 브라우저 내에서만 실행됩니다. 자세한 내용은 <a href="privacy.html">개인정보처리방침</a>을 확인하세요.</span>
+    </div>
+  </section>
+
+  <section class="container info-section">
+    <h2>HEIC와 JPG, 무엇이 다른가요?</h2>
+    <p>HEIC는 아이폰(iOS 11 이상)이 사진을 저장할 때 기본으로 사용하는 포맷으로, 같은 화질에서 JPG보다 파일 용량이 훨씬 작아요. 하지만 윈도우 PC나 일부 웹사이트, 오래된 앱에서는 HEIC 파일을 바로 열거나 업로드하지 못하는 경우가 많습니다. 아이폰 사진을 PC로 옮기거나 웹에 올릴 때는 호환성이 좋은 JPG로 변환해두는 게 안전해요.</p>
+  </section>
+
+  <section class="container steps-section">
+    <h2>이렇게 사용하세요</h2>
+    <ol class="steps">
+      <li><span class="step-num">1</span><div><h3>파일 올리기</h3><p>HEIC 파일을 드래그하거나 클릭해서 업로드하세요. 여러 장도 한 번에 가능해요.</p></div></li>
+      <li><span class="step-num">2</span><div><h3>자동 변환</h3><p>업로드하는 즉시 브라우저에서 바로 JPG 파일로 변환돼요. 서버로 전송되지 않아 안전해요.</p></div></li>
+      <li><span class="step-num">3</span><div><h3>다운로드</h3><p>변환된 파일을 미리보고 개별 또는 한 번에 다운로드하세요.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="container faq-section">
+    <h2>자주 묻는 질문</h2>
+    <details class="faq-item">
+      <summary>아이폰 사진(HEIC)이 PC나 다른 앱에서 안 열려요, 왜 그런가요?</summary>
+      <p>HEIC는 애플 기기 위주로 지원되는 포맷이라, 일부 윈도우 PC나 웹사이트에서는 인식하지 못할 수 있어요. JPG로 바꾸면 대부분의 기기와 프로그램에서 열 수 있습니다.</p>
+    </details>
+    <details class="faq-item">
+      <summary>변환에 시간이 오래 걸리나요?</summary>
+      <p>HEIC는 디코딩 과정이 필요해서 다른 포맷보다 조금 더 걸릴 수 있어요. 파일 용량이 크면 더 걸릴 수 있습니다.</p>
+    </details>
+    <details class="faq-item">
+      <summary>여러 장의 아이폰 사진을 한 번에 바꿀 수 있나요?</summary>
+      <p>네, 여러 HEIC 파일을 한꺼번에 올리면 각각 JPG로 변환되고 한 번에 다운로드할 수 있어요.</p>
+    </details>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer">
+  <div class="container">
+    <p>© 2026 이미지 포맷 변환기 모음 · 모든 변환은 사용자의 브라우저에서만 처리됩니다.</p>
+    <p><a href="privacy.html">개인정보처리방침</a></p>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "HEIC를 JPG로 변환",
+  "url": "https://YOUR-DOMAIN/heic-to-jpg.html",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Any (웹 브라우저)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+  "description": "아이폰 HEIC 사진을 JPG로 무료 변환하는 브라우저 기반 도구. 서버 업로드 없이 클라이언트에서 바로 처리됩니다."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "아이폰 사진(HEIC)이 PC나 다른 앱에서 안 열려요, 왜 그런가요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "HEIC는 애플 기기 위주로 지원되는 포맷이라, 일부 윈도우 PC나 웹사이트에서는 인식하지 못할 수 있어요. JPG로 바꾸면 대부분의 기기와 프로그램에서 열 수 있습니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "변환에 시간이 오래 걸리나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "HEIC는 디코딩 과정이 필요해서 다른 포맷보다 조금 더 걸릴 수 있어요. 파일 용량이 크면 더 걸릴 수 있습니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "여러 장의 아이폰 사진을 한 번에 바꿀 수 있나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "네, 여러 HEIC 파일을 한꺼번에 올리면 각각 JPG로 변환되고 한 번에 다운로드할 수 있어요." }
+    }
+  ]
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
+<script>
+  window.CONVERTER_CONFIG = {
+    label: 'JPG',
+    outputFormat: 'image/jpeg',
+    outputExt: '.jpg',
+    outputQuality: 0.92,
+    accept: ['image/heic', 'image/heif'],
+    acceptExt: /\.hei[cf]$/i,
+    acceptLabel: 'HEIC',
+    decodeWith: 'heic2any'
+  };
+</script>
+<script src="js/converter.js"></script>
+</body>
+</html>

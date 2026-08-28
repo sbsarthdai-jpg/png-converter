@@ -1,0 +1,108 @@
+/* ==========================================================================
+   디자인 시스템 토큰 — 색: 노션 모노톤 / 버튼: 라운드 / 폰트: Noto Sans KR / 아이콘: 둥근 라인
+   레시피 지정값이므로 임의로 값을 바꾸지 말 것.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+:root {
+  /* 색 조합: 노션 · 모노톤 */
+  --primary: #2383E2;
+  --text: #191919;
+  --sub: #787774;
+  --bg: #FFFFFF;
+  --surface: #F7F6F3;
+  --border: #E9E9E7;
+
+  /* 보조 색상 (경고/성공 — 모노톤 톤에 맞춘 최소 사용) */
+  --warning-bg: #FDF3E7;
+  --warning-text: #9A6324;
+  --warning-border: #F2D9B8;
+  --danger: #E03E3E;
+
+  /* 여백 / 반경 */
+  --radius-btn: 10px;
+  --radius-card: 14px;
+  --radius-sm: 8px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  --shadow-card: 0 1px 2px rgba(25, 25, 25, 0.05), 0 1px 8px rgba(25, 25, 25, 0.04);
+  --max-width: 960px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  margin: 0 0 var(--space-2);
+  color: var(--text);
+}
+
+p { margin: 0 0 var(--space-3); color: var(--text); }
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* 버튼 모양: 라운드 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-btn);
+  padding: 12px 20px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: .15s;
+}
+.btn:hover { filter: brightness(.95); }
+.btn:active { filter: brightness(.9); }
+.btn:disabled { opacity: .5; cursor: not-allowed; filter: none; }
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover { background: #efeee9; filter: none; }
+
+.btn-sm { padding: 8px 14px; font-size: 13px; }
+
+/* 아이콘: 둥근 라인 */
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
