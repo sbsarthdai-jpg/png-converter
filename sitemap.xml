@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://YOUR-DOMAIN/</loc>
+    <loc>https://convert-to-png-tool.netlify.app/</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://YOUR-DOMAIN/jpg-to-png.html</loc>
+    <loc>https://convert-to-png-tool.netlify.app/jpg-to-png.html</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://YOUR-DOMAIN/png-to-jpg.html</loc>
+    <loc>https://convert-to-png-tool.netlify.app/png-to-jpg.html</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://YOUR-DOMAIN/webp-to-png.html</loc>
+    <loc>https://convert-to-png-tool.netlify.app/webp-to-png.html</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://YOUR-DOMAIN/heic-to-jpg.html</loc>
+    <loc>https://convert-to-png-tool.netlify.app/heic-to-jpg.html</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://YOUR-DOMAIN/privacy.html</loc>
+    <loc>https://convert-to-png-tool.netlify.app/privacy.html</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
